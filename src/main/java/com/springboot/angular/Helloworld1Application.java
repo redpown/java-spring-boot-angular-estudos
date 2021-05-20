@@ -12,9 +12,11 @@ import com.springboot.angular.domain.Categoria;
 import com.springboot.angular.domain.Produto;
 import com.springboot.angular.repository.CategoriaRepository;
 import com.springboot.angular.repository.ProdutoRepository;
+
 @EnableAutoConfiguration
 @SpringBootApplication
 public class Helloworld1Application implements CommandLineRunner {
+	
 	@Autowired
 	private CategoriaRepository catrep;
 	
