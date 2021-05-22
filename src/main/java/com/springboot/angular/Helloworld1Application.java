@@ -9,12 +9,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.springboot.angular.domain.Categoria;
-import com.springboot.angular.domain.Cidade;
-import com.springboot.angular.domain.Estado;
 import com.springboot.angular.domain.Produto;
 import com.springboot.angular.repository.CategoriaRepository;
-import com.springboot.angular.repository.CidadeRepository;
-import com.springboot.angular.repository.EstadoRepository;
 import com.springboot.angular.repository.ProdutoRepository;
 
 @EnableAutoConfiguration
@@ -26,12 +22,6 @@ public class Helloworld1Application implements CommandLineRunner {
 	
 	@Autowired
 	private ProdutoRepository prod;
-	
-	@Autowired
-	private CidadeRepository city;
-	
-	@Autowired
-	private EstadoRepository states;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Helloworld1Application.class, args);
@@ -68,19 +58,5 @@ public class Helloworld1Application implements CommandLineRunner {
 		p13.getCategoria().addAll(Arrays.asList(cat02,cat01));
 		
 		prod.saveAll(Arrays.asList(p00,p01,p02,p10,p11,p12,p13));
-		
-		Estado est00 = new Estado(null,"Minas Gerais");
-		Estado est01 = new Estado(null,"São Paulo");
-		
-		states.saveAll(Arrays.asList(est00,est01));
-		
-		Cidade cid00 = new Cidade(null,"Hortolandia",est01);
-		Cidade cid01 = new Cidade(null,"Campinas",est01);
-		Cidade cid02 = new Cidade(null,"Rio Preto",est00);
-		
-		city.saveAll(Arrays.asList(cid00,cid01,cid02));
-		
-		est00.getCidades().addAll(Arrays.asList(cid00,cid01));
-		est01.getCidades().addAll(Arrays.asList(cid02,cid00));
 	}
 }
