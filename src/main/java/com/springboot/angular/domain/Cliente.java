@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.angular.domain.enums.TipoCliente;
 @Entity
 @Table(name = "Cliente", schema = "public")
@@ -29,6 +31,8 @@ public class Cliente implements Serializable {
 	private String nome,email,cpfcnpj;
 	private Integer tipo;
 	
+	//sempre usar @JsonManagedReference quando e o @mappedBy
+	@JsonManagedReference
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
