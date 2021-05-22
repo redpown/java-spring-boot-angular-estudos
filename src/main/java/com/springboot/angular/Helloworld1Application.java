@@ -10,10 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.springboot.angular.domain.Categoria;
 import com.springboot.angular.domain.Cidade;
+import com.springboot.angular.domain.Cliente;
+import com.springboot.angular.domain.Endereco;
 import com.springboot.angular.domain.Estado;
 import com.springboot.angular.domain.Produto;
+import com.springboot.angular.domain.enums.TipoCliente;
 import com.springboot.angular.repository.CategoriaRepository;
 import com.springboot.angular.repository.CidadeRepository;
+import com.springboot.angular.repository.ClienteRepository;
+import com.springboot.angular.repository.EnderecoRepository;
 import com.springboot.angular.repository.EstadoRepository;
 import com.springboot.angular.repository.ProdutoRepository;
 
@@ -32,6 +37,12 @@ public class Helloworld1Application implements CommandLineRunner {
 	
 	@Autowired
 	private EstadoRepository states;
+	
+	@Autowired
+	private ClienteRepository clie;
+	
+	@Autowired
+	private EnderecoRepository endereco;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Helloworld1Application.class, args);
@@ -82,5 +93,39 @@ public class Helloworld1Application implements CommandLineRunner {
 		
 		est00.getCidades().addAll(Arrays.asList(cid00,cid01));
 		est01.getCidades().addAll(Arrays.asList(cid02,cid00));
+		
+		Cliente cli00 = new Cliente(
+					null,"Maria Silva",
+					"maria.silva@gmail.com",
+					"39994938838838",
+					TipoCliente.PESSOAFISICA
+				);
+		cli00.getTelefone().addAll(Arrays.asList("39922887","199855669"));
+		
+		Endereco enderedo00 = new Endereco(
+				    null,
+					"Rua Flores",
+					"300",
+					"Apto 303",
+					"Jardim",
+					"388566466",
+					 cli00,
+					 cid02
+				);
+		
+		Endereco enderedo01 = new Endereco(
+			    null,
+				"Avenida Sumaré",
+				"105",
+				"Sala 020",
+				"Centro",
+				"48855698",
+				 cli00,
+				 cid00
+			);
+		cli00.getEnderecos().addAll(Arrays.asList(enderedo00,enderedo01));
+		
+		clie.saveAll(Arrays.asList(cli00));
+		endereco.saveAll(Arrays.asList(enderedo00,enderedo01));
 	}
 }
