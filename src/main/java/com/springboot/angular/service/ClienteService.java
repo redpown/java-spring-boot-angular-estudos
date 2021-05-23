@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.angular.domain.Cliente;
 import com.springboot.angular.repository.ClienteRepository;
-import com.springboot.angular.service.exception.ObjectNotFound;
+import com.springboot.angular.service.exception.IdNaoEncontrado;
 
 @Service
 public class ClienteService {
@@ -19,7 +19,7 @@ public class ClienteService {
 		
 		Optional<Cliente> obj = cliebanco.findById(id);
 		
-		return  obj.orElseThrow(()->new ObjectNotFound("Objeto não encontrado id:" + id + " Tipo:" + Cliente.class.getName()));
+		return  obj.orElseThrow(()->new IdNaoEncontrado("Objeto não encontrado id:" + id + " Tipo:" + Cliente.class.getName()));
 	}
 }
 

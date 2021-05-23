@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Endereco", schema = "public")
@@ -29,7 +27,7 @@ public class Endereco implements  Serializable {
 	private String cep;
 	
 	//sempre usar @JsonBackReference quando  for sem o @mappedBy
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name ="cliente_id")
 	private Cliente cliente;

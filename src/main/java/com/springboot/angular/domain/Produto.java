@@ -18,8 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "produto", schema = "public")
@@ -35,7 +33,7 @@ public class Produto implements Serializable {
 	
 	private Double preco;
 
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(
 				name = "produto_categoria",

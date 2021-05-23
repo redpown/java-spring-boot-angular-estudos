@@ -51,5 +51,14 @@ public class CategoriaController {
 		obj = service.Atualizar(obj);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@RequestMapping(value ="/{id}",  method = RequestMethod.DELETE)
+	public ResponseEntity<Void> Deletar(@PathVariable Integer id) {
+
+		service.Deletar(id);
+		return ResponseEntity.noContent().build();
+		
+		}
+	
 }
 
