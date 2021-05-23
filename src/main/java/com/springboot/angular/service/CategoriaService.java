@@ -26,6 +26,14 @@ public class CategoriaService {
 		 obj.setId(null);
 		 return obj = service.save(obj);
 	}
+	
+	public Categoria Atualizar(Categoria obj) {
+		///O METODO SAVE tb faz a atualização
+		///se o id for diferente de null
+		 Buscar(obj.getId());
+		 
+		 return obj = service.save(obj);
+	}
 }
 
 

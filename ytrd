@@ -1,0 +1,86 @@
+[33mcommit ff5a75d0feb9f6fcc8acac9b5ce634d225704362[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Sun May 23 16:08:28 2021 -0300
+
+    adicionado o metodo post em categoria
+
+[33mcommit 6137d5f14f738f58098188a0523e487cb6ef7e78[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Sun May 23 15:36:04 2021 -0300
+
+    mudando de repositorio
+    
+    mudando de repositorio
+
+[33mcommit 8156b72d1f5545ba2db5adbaf35a2f1de98a1b4b[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Sun May 23 12:40:23 2021 -0300
+
+    item pedido
+    
+    implementação do item pedido
+
+[33mcommit d62b07e3b2dcb2924c7b2a26dc7ccecea0daf562[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Sun May 23 11:01:03 2021 -0300
+
+    endereco , pagamento e pedido
+    
+    implementação de
+    endereco
+    pagamento
+    pedido
+
+[33mcommit badb7af972b8aabf03f7ecf6ea3b033f26b1a253[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Sat May 22 11:44:07 2021 -0300
+
+    implemento do cliente service
+    
+    implemento do cliente service
+
+[33mcommit 4f82c7d99026d416d6855c4a29889c74245c8344[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Sat May 22 11:18:51 2021 -0300
+
+    usuario e endereço
+    
+    aula 23
+
+[33mcommit 3e8354e811dcb4447533dd0d281ccc3cf2c3092a[m[33m ([m[1;32mJavaSpringBoot[m[33m)[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Fri May 21 23:29:37 2021 -0300
+
+    Revert "Revert "tabela cidade e estado""
+    
+    This reverts commit a286cd8494160e207583840d3b36a315b9501329.
+
+[33mcommit a286cd8494160e207583840d3b36a315b9501329[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Fri May 21 23:29:07 2021 -0300
+
+    Revert "tabela cidade e estado"
+    
+    This reverts commit abf84545b6beb059323e31253f3815e1740b0b7a.
+
+[33mcommit abf84545b6beb059323e31253f3815e1740b0b7a[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Fri May 21 23:18:57 2021 -0300
+
+    tabela cidade e estado
+    
+    implementação de estado e cidade
+
+[33mcommit 64f264574ad563a5ce3b3935576a6338d9066654[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Thu May 20 00:28:08 2021 -0300
+
+    modulo 2 aula 20
+    
+    correção da classe service e customização das exceprion
+
+[33mcommit fbec47cb839e10b30625a996f7eca1ed08a22e8c[m
+Author: André marques de lima <andre.marques091@gmail.com>
+Date:   Wed May 19 21:47:38 2021 -0300
+
+    projeto criado

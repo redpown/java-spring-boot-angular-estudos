@@ -2,8 +2,6 @@ package com.springboot.angular.controller;
 
 import java.net.URI;
 
-import javax.servlet.Servlet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +27,7 @@ public class CategoriaController {
 	private CategoriaService service;
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
 		Categoria obj = service.Buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -47,5 +45,11 @@ public class CategoriaController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@RequestMapping(value ="/{id}",  method = RequestMethod.PUT)
+	public ResponseEntity<Void> Atualizar(@RequestBody Categoria obj , @PathVariable Integer id) {
+		obj.setId(id);
+		obj = service.Atualizar(obj);
+		return ResponseEntity.noContent().build();
+	}
 }
 
