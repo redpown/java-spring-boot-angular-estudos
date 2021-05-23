@@ -8,4 +8,5 @@ import com.springboot.angular.domain.Estado;
 @Repository
 public interface EstadoRepository extends JpaRepository<Estado, Integer> {
 
+	
 }

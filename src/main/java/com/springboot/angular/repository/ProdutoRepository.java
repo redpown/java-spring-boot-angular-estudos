@@ -8,4 +8,5 @@ import com.springboot.angular.domain.Produto;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
+	
 }

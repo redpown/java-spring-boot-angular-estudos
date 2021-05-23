@@ -69,7 +69,7 @@ public class Helloworld1Application implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args ) throws Exception{
-		Categoria cat01 = new Categoria(null,"Hell World!");
+		Categoria cat01 = new Categoria(null,"Hello World!");
 		Categoria cat02 = new Categoria(null,"Salesforce");
 		
 		Produto p00 = new Produto(null,"Angular",13.50);
@@ -174,3 +174,4 @@ public class Helloworld1Application implements CommandLineRunner {
 		itemrepo.saveAll(Arrays.asList(item00,item01));
 	}
 }
+

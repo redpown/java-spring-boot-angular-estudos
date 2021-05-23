@@ -142,6 +142,4 @@ public class Endereco implements  Serializable {
 		return true;
 	}
 	
-	
-	
 }

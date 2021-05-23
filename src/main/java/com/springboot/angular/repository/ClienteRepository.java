@@ -8,4 +8,5 @@ import com.springboot.angular.domain.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
+	
 }

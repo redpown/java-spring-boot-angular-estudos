@@ -22,3 +22,5 @@ public class ClienteService {
 		return  obj.orElseThrow(()->new ObjectNotFound("Objeto não encontrado id:" + id + " Tipo:" + Cliente.class.getName()));
 	}
 }
+
+

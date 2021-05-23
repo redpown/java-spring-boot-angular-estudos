@@ -8,4 +8,5 @@ import com.springboot.angular.domain.Cidade;
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 
+	
 }

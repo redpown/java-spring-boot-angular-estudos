@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.angular.domain.Cliente;
-import com.springboot.angular.service.ClienteService;
+import com.springboot.angular.domain.Pedido;
+import com.springboot.angular.service.PedidoService;
 
 
 
 @RestController
-@RequestMapping(value="/cliente")
-public class ClienteController {
+@RequestMapping(value="/pedido")
+public class PedidoController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String Listar() {return "Rest Funcionando";}
 	
 	@Autowired
-	private ClienteService clieserv;
+	private PedidoService serv;
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
 	public ResponseEntity<?> fin(@PathVariable Integer id) {
-		Cliente obj = clieserv.Buscar(id);
+		Pedido obj = serv.Buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

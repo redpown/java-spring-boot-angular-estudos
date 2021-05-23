@@ -8,4 +8,5 @@ import com.springboot.angular.domain.Pedido;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
 
+	
 }
