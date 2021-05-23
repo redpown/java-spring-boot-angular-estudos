@@ -1,6 +1,8 @@
 package com.springboot.angular.controller;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.springboot.angular.DTO.CategoriaDTO;
 import com.springboot.angular.domain.Categoria;
 import com.springboot.angular.service.CategoriaService;
 
@@ -19,10 +22,7 @@ import com.springboot.angular.service.CategoriaService;
 @RestController
 @RequestMapping(value="/categoria")
 public class CategoriaController {
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public String Listar() {return "Rest Funcionando";}
-	
+		
 	@Autowired
 	private CategoriaService service;
 	
@@ -58,6 +58,13 @@ public class CategoriaController {
 		service.Deletar(id);
 		return ResponseEntity.noContent().build();
 		
+		}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<CategoriaDTO>> Listar() {
+		List<Categoria> lista = service.Todos();
+		List<CategoriaDTO> listaDTO = lista.stream().map(obj->new CategoriaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listaDTO);
 		}
 	
 }

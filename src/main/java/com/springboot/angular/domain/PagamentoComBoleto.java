@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import com.springboot.angular.domain.enums.EstadoPagamento;
 
 @Entity
-@Table(name = "pagamentocomboleto", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class PagamentoComBoleto extends Pagamento {
 	

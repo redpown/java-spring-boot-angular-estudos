@@ -1,5 +1,6 @@
 package com.springboot.angular.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,10 @@ public class CategoriaService {
 		 Buscar(obj.getId());
 		 
 		 return obj = service.save(obj);
+	}
+	
+	public List<Categoria> Todos() {
+			return service.findAll();
 	}
 	
 	public void Deletar(Integer id) {
