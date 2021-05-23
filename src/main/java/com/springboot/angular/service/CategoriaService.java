@@ -13,13 +13,18 @@ import com.springboot.angular.service.exception.ObjectNotFound;
 public class CategoriaService {
 	
 	@Autowired
-	private CategoriaRepository catbanco;
+	private CategoriaRepository service;
 
 	public Categoria Buscar(Integer id) {
 		
-		Optional<Categoria> obj = catbanco.findById(id);
+		Optional<Categoria> obj = service.findById(id);
 		
 		return  obj.orElseThrow(()->new ObjectNotFound("Objeto não encontrado id:" + id + " Tipo:" + Categoria.class.getName()));
+	}
+	
+	public Categoria Inserir(Categoria obj) {
+		 obj.setId(null);
+		 return obj = service.save(obj);
 	}
 }
 
