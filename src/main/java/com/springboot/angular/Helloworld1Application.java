@@ -14,6 +14,7 @@ import com.springboot.angular.domain.Cidade;
 import com.springboot.angular.domain.Cliente;
 import com.springboot.angular.domain.Endereco;
 import com.springboot.angular.domain.Estado;
+import com.springboot.angular.domain.ItemPedido;
 import com.springboot.angular.domain.Pagamento;
 import com.springboot.angular.domain.PagamentoComBoleto;
 import com.springboot.angular.domain.PagamentoComCartao;
@@ -26,6 +27,7 @@ import com.springboot.angular.repository.CidadeRepository;
 import com.springboot.angular.repository.ClienteRepository;
 import com.springboot.angular.repository.EnderecoRepository;
 import com.springboot.angular.repository.EstadoRepository;
+import com.springboot.angular.repository.ItemPedidoRepository;
 import com.springboot.angular.repository.PagamentoRepository;
 import com.springboot.angular.repository.PedidoRepository;
 import com.springboot.angular.repository.ProdutoRepository;
@@ -57,6 +59,9 @@ public class Helloworld1Application implements CommandLineRunner {
 	
 	@Autowired
 	private PagamentoRepository pag;
+	
+	@Autowired
+	private ItemPedidoRepository itemrepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Helloworld1Application.class, args);
@@ -147,17 +152,25 @@ public class Helloworld1Application implements CommandLineRunner {
 		Pedido ped01 = new Pedido(null,sdf.parse("30/09/2020 10:32"),cli00,enderedo00);
 		Pedido ped02 = new Pedido(null,sdf.parse("30/09/2019 10:32"),cli00,enderedo00);
 		
-		//Pagamento pagar01 = new PagamentoComCartao(null,EstadoPagamento.QUITADO,ped01,6);
-	    //ped01.setPagamento(pagar01);
+		Pagamento pagar01 = new PagamentoComCartao(null,EstadoPagamento.QUITADO,ped01,6);
+	    ped01.setPagamento(pagar01);
 	    
-		//Pagamento pagar02 = new PagamentoComBoleto(null,EstadoPagamento.PENDENETE,ped02,sdf.parse("30/10/2017 10:32"),null);
-		//ped02.setPagamento(pagar02);
+		Pagamento pagar02 = new PagamentoComBoleto(null,EstadoPagamento.PENDENETE,ped02,sdf.parse("30/10/2017 10:32"),null);
+		ped02.setPagamento(pagar02);
 		
 		//cli00.getPedidos().addAll(Arrays.asList(ped01,ped02));
 		
 		clie.saveAll(Arrays.asList(cli00));
 		ped.saveAll(Arrays.asList(ped01,ped02));
 		//clie.saveAll(Arrays.asList(cli00));
-		//pag.saveAll(Arrays.asList(pagar02));
+		pag.saveAll(Arrays.asList(pagar01,pagar02));
+		
+		ItemPedido item00 = new ItemPedido(ped01,p00,0.00,1,2000.00);
+		ItemPedido item01 = new ItemPedido(ped02,p01,0.00,5,3000.30);
+		
+		ped01.getItens().addAll(Arrays.asList(item00));
+		ped02.getItens().addAll(Arrays.asList(item01));
+		
+		itemrepo.saveAll(Arrays.asList(item00,item01));
 	}
 }
