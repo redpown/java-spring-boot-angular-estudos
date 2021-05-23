@@ -1,5 +1,6 @@
 package com.springboot.angular;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,20 @@ import com.springboot.angular.domain.Cidade;
 import com.springboot.angular.domain.Cliente;
 import com.springboot.angular.domain.Endereco;
 import com.springboot.angular.domain.Estado;
+import com.springboot.angular.domain.Pagamento;
+import com.springboot.angular.domain.PagamentoComBoleto;
+import com.springboot.angular.domain.PagamentoComCartao;
+import com.springboot.angular.domain.Pedido;
 import com.springboot.angular.domain.Produto;
+import com.springboot.angular.domain.enums.EstadoPagamento;
 import com.springboot.angular.domain.enums.TipoCliente;
 import com.springboot.angular.repository.CategoriaRepository;
 import com.springboot.angular.repository.CidadeRepository;
 import com.springboot.angular.repository.ClienteRepository;
 import com.springboot.angular.repository.EnderecoRepository;
 import com.springboot.angular.repository.EstadoRepository;
+import com.springboot.angular.repository.PagamentoRepository;
+import com.springboot.angular.repository.PedidoRepository;
 import com.springboot.angular.repository.ProdutoRepository;
 
 @EnableAutoConfiguration
@@ -43,6 +51,12 @@ public class Helloworld1Application implements CommandLineRunner {
 	
 	@Autowired
 	private EnderecoRepository endereco;
+	
+	@Autowired
+	private PedidoRepository ped;
+	
+	@Autowired
+	private PagamentoRepository pag;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Helloworld1Application.class, args);
@@ -127,5 +141,23 @@ public class Helloworld1Application implements CommandLineRunner {
 		
 		clie.saveAll(Arrays.asList(cli00));
 		endereco.saveAll(Arrays.asList(enderedo00,enderedo01));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		
+		Pedido ped01 = new Pedido(null,sdf.parse("30/09/2020 10:32"),cli00,enderedo00);
+		Pedido ped02 = new Pedido(null,sdf.parse("30/09/2019 10:32"),cli00,enderedo00);
+		
+		//Pagamento pagar01 = new PagamentoComCartao(null,EstadoPagamento.QUITADO,ped01,6);
+	    //ped01.setPagamento(pagar01);
+	    
+		//Pagamento pagar02 = new PagamentoComBoleto(null,EstadoPagamento.PENDENETE,ped02,sdf.parse("30/10/2017 10:32"),null);
+		//ped02.setPagamento(pagar02);
+		
+		//cli00.getPedidos().addAll(Arrays.asList(ped01,ped02));
+		
+		clie.saveAll(Arrays.asList(cli00));
+		ped.saveAll(Arrays.asList(ped01,ped02));
+		//clie.saveAll(Arrays.asList(cli00));
+		//pag.saveAll(Arrays.asList(pagar02));
 	}
 }

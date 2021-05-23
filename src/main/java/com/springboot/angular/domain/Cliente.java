@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -15,9 +16,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.angular.domain.enums.TipoCliente;
+
 @Entity
 @Table(name = "Cliente", schema = "public")
 public class Cliente implements Serializable {
@@ -29,16 +30,20 @@ public class Cliente implements Serializable {
 	private Integer id;
 	
 	private String nome,email,cpfcnpj;
+	
 	private Integer tipo;
 	
 	//sempre usar @JsonManagedReference quando e o @mappedBy
 	@JsonManagedReference
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name = "telefone")
 	private Set<String> telefone = new HashSet<String>();
+	
+	@OneToMany(mappedBy="cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente() {}
 
@@ -106,6 +111,14 @@ public class Cliente implements Serializable {
 	public void setTelefone(Set<String> telefone) {
 		this.telefone = telefone;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	@Override
 	public int hashCode() {
@@ -131,6 +144,8 @@ public class Cliente implements Serializable {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	
