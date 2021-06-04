@@ -2,6 +2,10 @@ package com.springboot.angular.DTO;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.springboot.angular.domain.Categoria;
 
 public class CategoriaDTO  implements Serializable {
@@ -10,6 +14,8 @@ public class CategoriaDTO  implements Serializable {
 	
 	private Integer id;
 	
+	@NotEmpty(message ="Preenchimento Obrigatório")
+	@Length(min = 5, max = 80,message="Tamanho deve ser entre 5 e 80")
 	private String nome;
 	
 	public CategoriaDTO() {}

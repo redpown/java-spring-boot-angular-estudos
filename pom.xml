@@ -45,6 +45,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- Java javax -->
+		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		
 		<!-- PostgreSQL -->
 		<dependency>
 	        <groupId>org.postgresql</groupId>
