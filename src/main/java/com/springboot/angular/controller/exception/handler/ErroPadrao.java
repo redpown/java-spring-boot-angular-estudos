@@ -2,14 +2,14 @@ package com.springboot.angular.controller.exception.handler;
 
 import java.io.Serializable;
 
-public class Handler implements Serializable {
+public class ErroPadrao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer status;
 	private String msg;
 	private long timestamp;
 	
-	public Handler(Integer status, String msg, long timestamp) {
+	public ErroPadrao(Integer status, String msg, long timestamp) {
 		super();
 		this.status = status;
 		this.msg = msg;
