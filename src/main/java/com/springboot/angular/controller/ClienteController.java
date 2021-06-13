@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.springboot.angular.DTO.ClienteDTO;
+import com.springboot.angular.DTO.NovoClienteDTO;
 import com.springboot.angular.domain.Cliente;
 import com.springboot.angular.service.ClienteService;
 
@@ -37,7 +38,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO objDTO) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody NovoClienteDTO objDTO) {
 		Cliente obj = service.fromDTO(objDTO);
 		obj = service.Inserir(obj);
 		

@@ -29,7 +29,13 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String nome,email,cpfcnpj;
+	private String nome;
+	
+	private String email;
+	
+	//caso o tutorial tivese cpf e cnpj com variaves serparadas
+	//a validacao seria pelo spring com @cpf e @cnpj
+	private String cpfcnpj;
 	
 	private Integer tipo;
 	

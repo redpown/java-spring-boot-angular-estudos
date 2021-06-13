@@ -11,8 +11,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.springboot.angular.DTO.ClienteDTO;
+import com.springboot.angular.DTO.NovoClienteDTO;
+import com.springboot.angular.domain.Cidade;
 import com.springboot.angular.domain.Cliente;
+import com.springboot.angular.domain.Endereco;
+import com.springboot.angular.domain.enums.TipoCliente;
 import com.springboot.angular.repository.ClienteRepository;
+import com.springboot.angular.repository.EnderecoRepository;
 import com.springboot.angular.service.exception.IdNaoEncontrado;
 import com.springboot.angular.service.exception.NaoPodeDeletarId;
 
@@ -21,6 +26,9 @@ public class ClienteService {
 	
 	@Autowired
 	private ClienteRepository service;
+	
+	@Autowired
+	private EnderecoRepository serviceEnd;
 
 	public Cliente Buscar(Integer id) {
 		
@@ -31,7 +39,9 @@ public class ClienteService {
 	
 	public Cliente Inserir(Cliente obj) {
 		 obj.setId(null);
-		 return obj = service.save(obj);
+		 obj = service.save(obj);
+		 serviceEnd.saveAll(obj.getEnderecos());
+		 return obj;
 	}
 	
 	public Cliente Atualizar(Cliente velhoObj) {
@@ -62,6 +72,23 @@ public class ClienteService {
 	
 	public Cliente fromDTO(ClienteDTO obj) {
 		return new Cliente(obj.getId(),obj.getNome(),obj.getEmail(),null,null);
+	}
+	
+	public Cliente fromDTO(NovoClienteDTO obj) {
+		Cliente clie = new Cliente(null,obj.getNome(),obj.getEmail(),obj.getCpfcnpj(),TipoCliente.toEnum(obj.getTipo()));
+		Cidade ciddade = new Cidade(obj.getCidadeId(), null, null);
+		Endereco end = new Endereco(
+				null,obj.getLogradouro(),obj.getNumero(),obj.getComplemento(),obj.getBairro(),obj.getCep(),clie,ciddade
+				);
+		clie.getEnderecos().add(end);
+		clie.getTelefone().add(obj.getTelefone1());
+		if (obj.getTelefone2()!=null) {
+			clie.getTelefone().add(obj.getTelefone2());
+		}
+		if (obj.getTelefone3()!=null) {
+			clie.getTelefone().add(obj.getTelefone3());
+		}
+		return clie;
 	}
 	
 	private void atualizarDados(Cliente novoObj,Cliente velhoObj) {

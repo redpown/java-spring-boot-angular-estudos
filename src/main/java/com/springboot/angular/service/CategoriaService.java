@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.angular.DTO.CategoriaDTO;
 import com.springboot.angular.domain.Categoria;
-import com.springboot.angular.domain.Cliente;
 import com.springboot.angular.repository.CategoriaRepository;
 import com.springboot.angular.service.exception.IdNaoEncontrado;
 import com.springboot.angular.service.exception.NaoPodeDeletarId;
