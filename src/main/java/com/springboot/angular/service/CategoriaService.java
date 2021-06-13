@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.angular.DTO.CategoriaDTO;
 import com.springboot.angular.domain.Categoria;
+import com.springboot.angular.domain.Cliente;
 import com.springboot.angular.repository.CategoriaRepository;
 import com.springboot.angular.service.exception.IdNaoEncontrado;
 import com.springboot.angular.service.exception.NaoPodeDeletarId;
@@ -35,12 +36,12 @@ public class CategoriaService {
 		 return obj = service.save(obj);
 	}
 	
-	public Categoria Atualizar(Categoria obj) {
+	public Categoria Atualizar(Categoria velhoObj) {
 		///O METODO SAVE tb faz a atualização
 		///se o id for diferente de null
-		 Buscar(obj.getId());
-		 
-		 return obj = service.save(obj);
+		Categoria novoObj = Buscar(velhoObj.getId());
+		atualizarDados(novoObj,velhoObj);
+        return  service.save(novoObj);
 	}
 	
 	public List<Categoria> Todos() {
@@ -65,6 +66,9 @@ public class CategoriaService {
 		return new Categoria(obj.getId(),obj.getNome());
 	}
 	
+	private void atualizarDados(Categoria novoObj,Categoria velhoObj) {
+		novoObj.setNome(velhoObj.getNome());
+	}
 }
 
 
